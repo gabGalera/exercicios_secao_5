@@ -1,89 +1,136 @@
 {
     "client": "Thunder Client",
-    "collectionName": "TryberCar",
-    "dateExported": "2022-08-24T04:44:39.140Z",
+    "collectionName": "TrybeCar",
+    "dateExported": "2022-08-30T18:57:45.247Z",
     "version": "1.1",
     "folders": [],
     "requests": [
-        {
-            "_id": "cc6b7f35-43b0-46b2-9b3a-5b3a90e51be9",
-            "colId": "16f8492b-6274-4476-8c78-be23c7fd82db",
-            "containerId": "",
-            "name": "Finalizar Viagem (Motorista)",
-            "url": "http://localhost:3001/drivers/2/travels/7/end",
-            "method": "PUT",
-            "sortNum": 10000,
-            "created": "2022-08-24T04:15:33.112Z",
-            "modified": "2022-08-24T04:15:33.112Z",
-            "headers": [],
-            "params": [],
-            "tests": []
+      {
+        "_id": "27aec684-f92c-4990-9bb0-dee6632676fa",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Finalizar Viagem (Motorista)",
+        "url": "http://localhost:3001/drivers/2/travels/3/end",
+        "method": "PUT",
+        "sortNum": 10000,
+        "created": "2022-08-24T16:30:36.362Z",
+        "modified": "2022-08-27T20:51:17.090Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+      },
+      {
+        "_id": "7ed58b68-f6a2-4c95-a289-f8faef2ec400",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Iniciar Viagem (Motorista)",
+        "url": "http://localhost:3001/drivers/2/travels/3/start",
+        "method": "PUT",
+        "sortNum": 20000,
+        "created": "2022-08-24T16:30:36.363Z",
+        "modified": "2022-08-27T20:50:56.517Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+      },
+      {
+        "_id": "75d9b51e-8be5-4e98-b37c-b359abfa1163",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Atribuir Viagem (Motorista)",
+        "url": "http://localhost:3001/drivers/2/travels/3/assign",
+        "method": "PUT",
+        "sortNum": 30000,
+        "created": "2022-08-24T16:30:36.364Z",
+        "modified": "2022-08-27T20:51:52.791Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+      },
+      {
+        "_id": "f583cddb-ad9e-43c8-b630-97b919caccdc",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Listar Viagens Abertas (Motorista)",
+        "url": "http://localhost:3001/drivers/open/travels",
+        "method": "GET",
+        "sortNum": 40000,
+        "created": "2022-08-24T16:30:36.365Z",
+        "modified": "2022-08-24T16:30:36.365Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+      },
+      {
+        "_id": "5354674c-c4eb-47e1-ad5d-a3c7e7a209f1",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Criar Viagem (Passageiro)",
+        "url": "http://localhost:3001/passengers/3/request/travel",
+        "method": "POST",
+        "sortNum": 50000,
+        "created": "2022-08-24T16:30:36.366Z",
+        "modified": "2022-08-24T16:30:36.366Z",
+        "headers": [],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"startingAddress\": \"Rua AAAA\",\n  \"endingAddress\": \"Rua BBBB\",\n  \"waypoints\": [\n    {\n      \"address\": \"Ponto CCCC\",\n      \"stopOrder\": 1\n    },\n    {\n      \"address\": \"Ponto DDDD\",\n      \"stopOrder\": 2\n    },\n    {\n      \"address\": \"Ponto 3\",\n      \"stopOrder\": 3\n    }\n  ]\n}",
+          "form": []
         },
-        {
-            "_id": "d5c960ab-92d9-4615-8965-0659c051c9c0",
-            "colId": "16f8492b-6274-4476-8c78-be23c7fd82db",
-            "containerId": "",
-            "name": "Iniciar Viagem (Motorista)",
-            "url": "http://localhost:3001/drivers/2/travels/7/start",
-            "method": "PUT",
-            "sortNum": 20000,
-            "created": "2022-08-24T04:15:33.113Z",
-            "modified": "2022-08-24T04:15:33.113Z",
-            "headers": [],
-            "params": [],
-            "tests": []
+        "tests": []
+      },
+      {
+        "_id": "080f4e44-b14b-45b3-97a2-87979c49b437",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Listar motoristas (Exercício 1)",
+        "url": "http://localhost:3001/drivers",
+        "method": "GET",
+        "sortNum": 60000,
+        "created": "2022-08-24T21:09:47.591Z",
+        "modified": "2022-08-24T21:10:01.211Z",
+        "headers": [],
+        "params": [],
+        "tests": []
+      },
+      {
+        "_id": "203b8eb0-aef7-4368-a27e-1e58acf803a3",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Criar carro (Exercício 2)",
+        "url": "http://localhost:3001/cars",
+        "method": "POST",
+        "sortNum": 70000,
+        "created": "2022-08-24T21:10:40.787Z",
+        "modified": "2022-08-24T21:27:50.976Z",
+        "headers": [],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"model\": \"Ford Ka\",\n  \"color\": \"Amarelo\",\n  \"licensePlate\": \"ABC1D2E\"\n}",
+          "form": []
         },
-        {
-            "_id": "a99f088a-ad9c-4e07-a43c-9d7d277ad8bb",
-            "colId": "16f8492b-6274-4476-8c78-be23c7fd82db",
-            "containerId": "",
-            "name": "Atribuir Viagem (Motorista)",
-            "url": "http://localhost:3001/drivers/2/travels/7/assign",
-            "method": "PUT",
-            "sortNum": 30000,
-            "created": "2022-08-24T04:15:33.114Z",
-            "modified": "2022-08-24T04:15:33.114Z",
-            "headers": [],
-            "params": [],
-            "tests": []
+        "tests": []
+      },
+      {
+        "_id": "bd46e679-0bcf-4a92-8673-39a732787a70",
+        "colId": "513cc78d-742f-458e-999d-f94c760b84ed",
+        "containerId": "",
+        "name": "Criar motorista (Exercício 3)",
+        "url": "http://localhost:3001/drivers",
+        "method": "POST",
+        "sortNum": 80000,
+        "created": "2022-08-24T21:12:42.522Z",
+        "modified": "2022-08-24T21:13:28.083Z",
+        "headers": [],
+        "params": [],
+        "body": {
+          "type": "json",
+          "raw": "{\n  \"name\": \"Gus\",\n  \"carIds\": [\n    1,\n    2\n  ]\n}",
+          "form": []
         },
-        {
-            "_id": "a2737d08-fdda-49ad-b7c3-ff1c8b272f1d",
-            "colId": "16f8492b-6274-4476-8c78-be23c7fd82db",
-            "containerId": "",
-            "name": "Listar Viagens Abertas (Motorista)",
-            "url": "http://localhost:3001/drivers/open/travels",
-            "method": "GET",
-            "sortNum": 40000,
-            "created": "2022-08-24T04:15:33.115Z",
-            "modified": "2022-08-24T04:15:33.115Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"start_point\": \"Rua X\",\n  \"ending_point\": \"Rua X\",\n  \"waypoints\": [\n    {\n      \"address\": \"Ponto 1\",\n      \"stop_order\": 1\n    },\n    {\n      \"address\": \"Ponto 2\",\n      \"stop_order\": 2\n    },\n    {\n      \"address\": \"Ponto 3\",\n      \"stop_order\": 3\n    }\n  ]\n}",
-                "form": []
-            },
-            "tests": []
-        },
-        {
-            "_id": "b1005755-cd8f-489a-a75a-5521d2ef2e05",
-            "colId": "16f8492b-6274-4476-8c78-be23c7fd82db",
-            "containerId": "",
-            "name": "Criar Viagem (Passageiro)",
-            "url": "http://localhost:3001/passengers/3/request/travel",
-            "method": "POST",
-            "sortNum": 50000,
-            "created": "2022-08-24T04:15:33.116Z",
-            "modified": "2022-08-24T04:44:11.671Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"startingAddress\": \"Rua AAAA\",\n  \"endingAddress\": \"Rua BBBB\",\n  \"waypoints\": [\n    {\n      \"address\": \"Ponto CCCC\",\n      \"stopOrder\": 1\n    },\n    {\n      \"address\": \"Ponto DDDD\",\n      \"stopOrder\": 2\n    },\n    {\n      \"address\": \"Ponto 3\",\n      \"stopOrder\": 3\n    }\n  ]\n}",
-                "form": []
-            },
-            "tests": []
-        }
+        "tests": []
+      }
     ]
-}
+  }

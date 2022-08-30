@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS waypoints;
 DROP TABLE IF EXISTS travels;
 DROP TABLE IF EXISTS travel_status;
 DROP TABLE IF EXISTS passengers;
+DROP TABLE IF EXISTS drivers_cars;
 DROP TABLE IF EXISTS drivers;
 DROP TABLE IF EXISTS cars;
 
@@ -38,12 +39,20 @@ CREATE TABLE IF NOT EXISTS cars (
 CREATE TABLE IF NOT EXISTS drivers (
 	id INTEGER AUTO_INCREMENT,
     name VARCHAR(100),
-    car_id INTEGER NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS drivers_cars ( 
+  driver_id INTEGER NOT NULL,
+  car_id INTEGER NOT NULL,
+    FOREIGN KEY (driver_id)
+      REFERENCES drivers(id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE, 
     FOREIGN KEY (car_id) 
-		REFERENCES cars(id)
-        ON DELETE CASCADE 
-        ON UPDATE CASCADE
+    REFERENCES cars(id)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
 );
 
 -- Criando a tabela travels
@@ -104,12 +113,21 @@ INSERT INTO cars (model, color, license_plate) VALUES
     ('Volkswagen Gol', 'Vermelho', 'DZG-4376'),
     ('Chevrolet Onix', 'Prata', 'KBJ-2899'),
     ('Renault Logan', 'Azul', 'NFA-9035'),
-    ('Fiat Siena', 'Cinza', 'HTH-9177');
+    ('Fiat Siena', 'Cinza', 'HTH-9177'),
+    ('Nissan Versa', 'Preto', 'BGY-6802');
 
 -- Pré populando a tabela drivers
-INSERT INTO drivers (name, car_id) VALUES 
-	('Liana Cisneiros', 1),
-    ('Fábio Frazão', 2),
-    ('Anastacia Bicalho', 3),
-    ('Samara Granjeiro', 4),
-    ('Levi Teixeira', 5);
+INSERT INTO drivers (name) VALUES 
+	('Liana Cisneiros'),
+    ('Fábio Frazão'),
+    ('Anastacia Bicalho'),
+    ('Samara Granjeiro'),
+    ('Levi Teixeira');
+
+INSERT INTO drivers_cars (driver_id, car_id) VALUES 
+	(1, 1),
+  (2, 2),
+  (3, 3),
+  (4, 4), 
+  (5, 5),
+  (5, 6);

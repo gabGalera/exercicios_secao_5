@@ -40,12 +40,14 @@ services:
 
   # Serviço que irá rodar o banco de dados
   database:
-    image: mysql:8.0.29
+    image: mysql:8.0.29-oracle
+    #platform: linux/arm64/v8
+    #image: mysql:8.0.29
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: trybecardb
     ports:
-      - "33060:3306"
+      - "33061:3306"
     
 
 # Lista de redes que os containeres irão utilizar
@@ -54,4 +56,5 @@ networks:
   default:
     # Dá um nome específico à rede padrão
     name:  trybecar_net
+
 
