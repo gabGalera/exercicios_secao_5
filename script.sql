@@ -126,8 +126,8 @@ INSERT INTO drivers (name) VALUES
 
 INSERT INTO drivers_cars (driver_id, car_id) VALUES 
 	(1, 1),
-  (2, 2),
-  (3, 3),
-  (4, 4), 
-  (5, 5),
-  (5, 6);
+    (2, 2),
+    (3, 3),
+    (4, 4), 
+    (5, 5),
+    (5, 6);

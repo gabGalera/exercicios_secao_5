@@ -1,4 +1,3 @@
-const camelize = require('camelize');
 const express = require('express');
 const connection = require('./connection');
 
@@ -63,7 +62,7 @@ app.get('/drivers/open/travels', async (_req, res) => {
     'SELECT * FROM travels WHERE travel_status_id = ?',
     [WAITING_DRIVER],
   );
-  res.status(200).json(camelize(result));
+  res.status(200).json(result);
 });
 
 app.put('/drivers/:driverId/travels/:travelId/assign', async (req, res) => {
@@ -80,7 +79,7 @@ app.put('/drivers/:driverId/travels/:travelId/assign', async (req, res) => {
     'SELECT * FROM travels WHERE id = ?',
     [travelId],
   );
-  res.status(200).json(camelize(result));
+  res.status(200).json(result);
 });
 
 app.put('/drivers/:driverId/travels/:travelId/start', async (req, res) => {
@@ -93,7 +92,7 @@ app.put('/drivers/:driverId/travels/:travelId/start', async (req, res) => {
     'SELECT * FROM travels WHERE id = ?',
     [travelId],
   );
-  res.status(200).json(camelize(result));
+  res.status(200).json(result);
 });
 
 app.put('/drivers/:driverId/travels/:travelId/end', async (req, res) => {
@@ -106,7 +105,7 @@ app.put('/drivers/:driverId/travels/:travelId/end', async (req, res) => {
     'SELECT * FROM travels WHERE id = ?',
     [travelId],
   );
-  res.status(200).json(camelize(result));
+  res.status(200).json(result);
 });
 
 module.exports = app;
