@@ -50,7 +50,7 @@ app.post('/passengers/:passengerId/request/travel', async (req, res) => {
       'SELECT * FROM travels WHERE id = ?',
       [resultTravel.insertId],
     );
-    res.status(201).json(camelize(response));
+    res.status(201).json(response);
     return;
   }
 
