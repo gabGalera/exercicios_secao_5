@@ -34,7 +34,7 @@ services:
     # Configura as variáveis de ambiente dentro do container
     environment:
       MYSQL_USER: root
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD: root
       MYSQL_PORT: '3306'
       MYSQL_HOST: database # Nome do service logo abaixo
       PORT: '3001'
@@ -42,11 +42,12 @@ services:
   # Serviço que irá rodar o banco de dados
   database:
     image: mysql:8.0.29
+    container_name: trybecar_db
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: trybecardb
     ports:
-      - "33061:3306"
+      - "33060:3306"
     
 
 # Lista de redes que os containeres irão utilizar
