@@ -49,8 +49,7 @@ app.post('/passengers/:passengerId/request/travel', async (req, res) => {
       'SELECT * FROM travels WHERE id = ?',
       [resultTravel.insertId],
     );
-    res.status(201).json(response);
-    return;
+    return res.status(201).json(response);
   }
 
   res.status(500).json({ message: 'Ocorreu um erro' });
