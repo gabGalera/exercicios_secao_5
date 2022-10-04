@@ -1,7 +1,8 @@
--- Usando o banco trybecashdb
+-- Excluindo a database caso ela já exista e criando logo em seguida
 DROP DATABASE IF EXISTS trybecardb;
 CREATE DATABASE trybecardb;
 
+-- Usando o banco trybecashdb
 USE trybecardb;
 
 -- Excluindo as tabelas se as mesmas existirem
