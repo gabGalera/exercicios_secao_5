@@ -1,4 +1,5 @@
 const express = require('express');
+const camelize = require('camelize');
 const connection = require('./connection');
 
 const app = express();
@@ -29,10 +30,10 @@ const saveWaypoints = (waypoints, travelId) => {
   return [];
 };
 
+// eslint-disable-next-line max-lines-per-function
 app.post('/passengers/:passengerId/request/travel', async (req, res) => {
   const { passengerId } = req.params;
   const { startingAddress, endingAddress, waypoints } = req.body;
-
   if (await doesPassengerExist(passengerId)) {
     const [resultTravel] = await connection.execute(
       `INSERT INTO travels 
@@ -44,14 +45,12 @@ app.post('/passengers/:passengerId/request/travel', async (req, res) => {
       ],
     );
     await Promise.all(saveWaypoints(waypoints, resultTravel.insertId));
-
     const [[response]] = await connection.execute(
       'SELECT * FROM travels WHERE id = ?',
       [resultTravel.insertId],
     );
-    return res.status(201).json(response);
+    return res.status(201).json(camelize(response));
   }
-
   res.status(500).json({ message: 'Ocorreu um erro' });
 });
 
