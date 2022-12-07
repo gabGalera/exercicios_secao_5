@@ -30,7 +30,6 @@ const saveWaypoints = (waypoints, travelId) => {
   return [];
 };
 
-// eslint-disable-next-line max-lines-per-function
 app.post('/passengers/:passengerId/request/travel', async (req, res) => {
   const { passengerId } = req.params;
   const { startingAddress, endingAddress, waypoints } = req.body;
