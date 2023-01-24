@@ -11,7 +11,7 @@ const DRIVER_ON_THE_WAY = 2;
 const TRAVEL_IN_PROGRESS = 3;
 const TRAVEL_FINISHED = 4;
 
-const doesPassengerExist = async (passengerId) => {
+const passengerExists = async (passengerId) => {
   const [[passenger]] = await connection.execute(
     'SELECT * FROM passengers WHERE id = ?',
     [passengerId],
@@ -33,7 +33,7 @@ const saveWaypoints = (waypoints, travelId) => {
 app.post('/passengers/:passengerId/request/travel', async (req, res) => {
   const { passengerId } = req.params;
   const { startingAddress, endingAddress, waypoints } = req.body;
-  if (await doesPassengerExist(passengerId)) {
+  if (await passengerExists(passengerId)) {
     const [resultTravel] = await connection.execute(
       `INSERT INTO travels 
           (passenger_id, starting_address, ending_address) VALUE (?, ?, ?)`,
