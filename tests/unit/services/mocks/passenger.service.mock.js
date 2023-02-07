@@ -11,6 +11,12 @@ const allPassengers = [
   },
 ];
 
+const invalidValue = 'a';
+
 module.exports = {
+  invalidValue,
+  validName,
+  validEmail,
+  validPhone,
   allPassengers,
 };

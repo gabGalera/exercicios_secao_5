@@ -16,7 +16,18 @@ const findById = async (passengerId) => {
   return { type: null, message: passenger };
 };
 
+const createPassenger = async (name, email, phone) => {
+  const error = schema.validateNewPassenger(name, email, phone);
+  if (error.type) return error;
+
+  const newPassengerId = await passengerModel.insert({ name, email, phone });
+  const newPassenger = await passengerModel.findById(newPassengerId);
+
+  return { type: null, message: newPassenger };
+};
+
 module.exports = {
   findAll,
   findById,
+  createPassenger,
 };
