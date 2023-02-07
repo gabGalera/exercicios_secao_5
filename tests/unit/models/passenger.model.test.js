@@ -19,4 +19,13 @@ describe('Testes de unidade do model de pessoas passageiras', function () {
   afterEach(function () {
     sinon.restore();
   });
+  
+  it('Recuperando uma pessoa passageira a partir do seu id', async function () {
+    // Arrange
+    sinon.stub(connection, 'execute').resolves([[passengers[0]]]);
+    // Act
+    const result = await passengerModel.findById(1);
+    // Assert
+    expect(result).to.be.deep.equal(passengers[0]);
+  });
 });
