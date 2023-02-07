@@ -26,6 +26,15 @@ describe('Testes de unidade do model de viagens', function () {
     // assert
     expect(result).to.be.deep.equal(travels[0]);
   });
+
+  it('Recuperando as travels a partir do seu travel_status_id', async function () {
+    // arrange
+    sinon.stub(connection, 'execute').resolves([travelsFromDB]);
+    // act
+    const result = await travelModel.findByTravelStatusId(1);
+    // assert
+    expect(result).to.be.deep.equal(travels);
+  });
   
   afterEach(function () {
     sinon.restore();
