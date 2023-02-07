@@ -47,7 +47,7 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: trybecardb
     ports:
-      - "33060:3306"
+      - 33060:3306
     
 
 # Lista de redes que os containeres irão utilizar

@@ -2,6 +2,8 @@ const express = require('express');
 const camelize = require('camelize'); // para entender melhor esse pacote vocÊ pode dar uma olhadinha aqui: https://www.npmjs.com/package/camelize
 const connection = require('./models/connection');
 
+const { travelModel } = require('./models');
+
 const app = express();
 
 app.use(express.json());
@@ -34,19 +36,13 @@ app.post('/passengers/:passengerId/request/travel', async (req, res) => {
   const { passengerId } = req.params;
   const { startingAddress, endingAddress, waypoints } = req.body;
   if (await passengerExists(passengerId)) {
-    const [resultTravel] = await connection.execute(
-      `INSERT INTO travels 
-          (passenger_id, starting_address, ending_address) VALUE (?, ?, ?)`,
-      [
-        passengerId,
-        startingAddress,
-        endingAddress,
-      ],
-    );
-    await Promise.all(saveWaypoints(waypoints, resultTravel.insertId));
+    const travelId = await travelModel.insert({ passengerId, startingAddress, endingAddress });
+
+    await Promise.all(saveWaypoints(waypoints, travelId));
+    
     const [[response]] = await connection.execute(
       'SELECT * FROM travels WHERE id = ?',
-      [resultTravel.insertId],
+      [travelId],
     );
     return res.status(201).json(camelize(response));
   }
