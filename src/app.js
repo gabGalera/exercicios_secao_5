@@ -1,5 +1,4 @@
 const express = require('express');
-const camelize = require('camelize'); // para entender melhor esse pacote vocÊ pode dar uma olhadinha aqui: https://www.npmjs.com/package/camelize
 const connection = require('./models/connection');
 
 const { travelModel } = require('./models');
@@ -40,11 +39,9 @@ app.post('/passengers/:passengerId/request/travel', async (req, res) => {
 
     await Promise.all(saveWaypoints(waypoints, travelId));
     
-    const [[response]] = await connection.execute(
-      'SELECT * FROM travels WHERE id = ?',
-      [travelId],
-    );
-    return res.status(201).json(camelize(response));
+    const travel = await travelModel.findById(travelId);
+
+    return res.status(201).json(travel);
   }
   res.status(500).json({ message: 'Ocorreu um erro' });
 });

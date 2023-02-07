@@ -1,3 +1,4 @@
+const camelize = require('camelize');
 const snakeize = require('snakeize');
 const connection = require('./connection');
 
@@ -15,6 +16,16 @@ const insert = async (travel) => {
 
   return insertId;
 };
+
+const findById = async (travelId) => {
+  const [[result]] = await connection.execute(
+    'SELECT * FROM travels WHERE id = ?',
+    [travelId],
+  );
+  return camelize(result);
+};
+
 module.exports = {
   insert,
+  findById,
 };
