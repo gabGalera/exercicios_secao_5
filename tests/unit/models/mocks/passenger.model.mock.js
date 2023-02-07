@@ -32,6 +32,13 @@ const passengers = [
   },
 ];
 
+const newPassenger = {
+  name: 'Bruce Lane',
+  email: 'bruce.lane@acme.com',
+  phone: '(77) 8179-0943',
+};
+
 module.exports = {
   passengers,
+  newPassenger,
 };
