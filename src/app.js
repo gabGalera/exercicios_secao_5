@@ -1,6 +1,6 @@
 const express = require('express');
 const camelize = require('camelize'); // para entender melhor esse pacote vocÊ pode dar uma olhadinha aqui: https://www.npmjs.com/package/camelize
-const connection = require('./connection');
+const connection = require('./models/connection');
 
 const app = express();
 
