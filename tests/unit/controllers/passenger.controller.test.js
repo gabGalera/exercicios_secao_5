@@ -9,6 +9,8 @@ const { passengerService } = require('../../../src/services');
 const { passengerController } = require('../../../src/controllers');
 const {
   passengerListMock,
+  passengerMock,
+  newPassengerMock,
 } = require('./mocks/passenger.controller.mock');
 
 describe('Teste de unidade do passengerController', function () {
@@ -33,6 +35,52 @@ describe('Teste de unidade do passengerController', function () {
     });
   });
   
+  describe('Buscando uma pessoa passageira', function () {
+    it('deve responder com 200 e os dados do banco quando existir', async function () {
+      // Arrange
+      const res = {};
+      const req = {
+        params: { id: 1 },
+      };
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon
+        .stub(passengerService, 'findById')
+        .resolves({ type: null, message: newPassengerMock });
+
+      // Act
+      await passengerController.getPassenger(req, res);
+
+      // Assert
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith(newPassengerMock);
+    });
+
+    describe('Buscando uma pessoa passageira', function () {
+      it('deve responder com 200 e os dados do banco quando existir', async function () {
+        // Arrange
+        const res = {};
+        const req = {
+          params: { id: 1 },
+        };
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+        sinon
+          .stub(passengerService, 'findById')
+          .resolves({ type: null, message: newPassengerMock });
+  
+        // Act
+        await passengerController.getPassenger(req, res);
+  
+        // Assert
+        expect(res.status).to.have.been.calledWith(200);
+        expect(res.json).to.have.been.calledWith(newPassengerMock);
+      });
+    });
+  });
+
   afterEach(function () {
     sinon.restore();
   });
