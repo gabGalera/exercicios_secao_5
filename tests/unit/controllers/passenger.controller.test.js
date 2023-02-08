@@ -34,28 +34,6 @@ describe('Teste de unidade do passengerController', function () {
       expect(res.json).to.have.been.calledWith(passengerListMock);
     });
   });
-  
-  describe('Buscando uma pessoa passageira', function () {
-    it('deve responder com 200 e os dados do banco quando existir', async function () {
-      // Arrange
-      const res = {};
-      const req = {
-        params: { id: 1 },
-      };
-
-      res.status = sinon.stub().returns(res);
-      res.json = sinon.stub().returns();
-      sinon
-        .stub(passengerService, 'findById')
-        .resolves({ type: null, message: newPassengerMock });
-
-      // Act
-      await passengerController.getPassenger(req, res);
-
-      // Assert
-      expect(res.status).to.have.been.calledWith(200);
-      expect(res.json).to.have.been.calledWith(newPassengerMock);
-    });
 
     describe('Buscando uma pessoa passageira', function () {
       it('deve responder com 200 e os dados do banco quando existir', async function () {
@@ -108,7 +86,6 @@ describe('Teste de unidade do passengerController', function () {
         expect(res.json).to.have.been.calledWith(newPassengerMock);
       });
     });
-  });
 
     it('ao enviar um nome com menos de 3 caracteres deve retornar um erro!', async function () {
       // Arrange
