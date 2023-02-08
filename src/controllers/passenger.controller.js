@@ -18,7 +18,18 @@ const getPassenger = async (req, res) => {
   res.status(200).json(message);
 };
 
+const createPassenger = async (req, res) => {
+  const { name, email, phone } = req.body;
+  
+  const { type, message } = await passengerService.createPassenger(name, email, phone);
+
+  if (type) return res.status(errorMap.mapError(type)).json(message);
+
+  res.status(201).json(message);
+};
+
 module.exports = {
   getPassenger,
   listPassengers,
+  createPassenger,
 };
