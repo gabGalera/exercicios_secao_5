@@ -14,7 +14,10 @@ const driverIdMock = {
   name: 'Liana Cisneiros',
 };
 
+const expectedId = 1
+
 module.exports = {
   driversMock,
   driverIdMock,
+  expectedId,
 }
