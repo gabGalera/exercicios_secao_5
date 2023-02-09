@@ -16,10 +16,6 @@ describe('Testes de unidade do model de pessoas passageiras', function () {
     expect(result).to.be.deep.equal(passengers);
   });
 
-  afterEach(function () {
-    sinon.restore();
-  });
-
   it('Recuperando uma pessoa passageira a partir do seu id', async function () {
     // Arrange
     sinon.stub(connection, 'execute').resolves([[passengers[0]]]);
@@ -36,5 +32,9 @@ describe('Testes de unidade do model de pessoas passageiras', function () {
     const result = await passengerModel.insert(newPassenger);
     // Assert
     expect(result).to.equal(42);
+  });
+
+  afterEach(function () {
+    sinon.restore();
   });
 });
