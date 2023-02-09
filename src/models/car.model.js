@@ -1,6 +1,15 @@
 const snakeize = require('snakeize');
 const connection = require('./connection');
 
+const findById = async (id) => {
+  const result = connection.execute(
+    'SELECT * FROM cars WHERE id = ?',
+    [id],
+  );
+
+  return result;
+};
+
 const insert = async (car) => {
   const columns = Object.keys(snakeize(car)).join(', ');
 
@@ -18,4 +27,5 @@ const insert = async (car) => {
 
 module.exports = {
   insert,
+  findById,
 };
