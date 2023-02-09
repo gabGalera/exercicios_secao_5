@@ -27,7 +27,7 @@ describe('Testes sobre driverModel', function () {
     const result = await driverModel.findById(1);
 
     // Assertion
-    expect(result.id).to.be.deep.equal(driverIdMock);
+    expect(result).to.be.deep.equal(driverIdMock);
   });
   
   afterEach(function () {

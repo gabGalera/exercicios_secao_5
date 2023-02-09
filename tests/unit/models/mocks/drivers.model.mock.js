@@ -9,7 +9,10 @@ const driversMock = [
   },
 ];
 
-const driverIdMock = 1;
+const driverIdMock = {
+  id: 1,
+  name: 'Liana Cisneiros',
+};
 
 module.exports = {
   driversMock,
