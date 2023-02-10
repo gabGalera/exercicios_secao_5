@@ -23,10 +23,10 @@ describe('Testes sobre o carModel', function () {
     sinon.stub(connection, 'execute').resolves([[expectedCar]]);
 
     // Act
-    const [result] = await carModel.findById(2);
+    const result = await carModel.findById(2);
 
     // Assert
-    expect(result[0]).to.be.deep.equal(expectedCar);
+    expect(result).to.be.deep.equal(expectedCar);
   });
 
   afterEach(function () {

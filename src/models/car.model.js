@@ -1,13 +1,14 @@
+const camelize = require('camelize');
 const snakeize = require('snakeize');
 const connection = require('./connection');
 
 const findById = async (id) => {
-  const result = connection.execute(
+  const [[result]] = await connection.execute(
     'SELECT * FROM cars WHERE id = ?',
     [id],
   );
 
-  return result;
+  return camelize(result);
 };
 
 const insert = async (car) => {

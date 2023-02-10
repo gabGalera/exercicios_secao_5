@@ -8,6 +8,12 @@ const addPassengerSchema = Joi.object({
   phone: Joi.string().min(9).max(20).required(),
 });
 
+const addDriverSchema = Joi.object({
+  model: Joi.string().min(3).required(),
+  color: Joi.string().min(2).required(),
+  licensePlate: Joi.string().min(7).max(7).required(),
+});
+
 const pointSchema = Joi.string().min(3).required();
 
 const waypointSchema = Joi.object({
@@ -25,4 +31,5 @@ module.exports = {
   idSchema,
   addPassengerSchema,
   addRequestTravelSchema,
+  addDriverSchema,
 };

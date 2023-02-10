@@ -1,5 +1,10 @@
 const { travelModel, driverModel } = require('../../models');
-const { addPassengerSchema, idSchema, addRequestTravelSchema } = require('./schemas');
+const { 
+  addPassengerSchema, 
+  idSchema, 
+  addRequestTravelSchema, 
+  addDriverSchema, 
+} = require('./schemas');
 
 const validateId = (id) => {
   const { error } = idSchema.validate(id);
@@ -44,10 +49,23 @@ const validateAlreadyDriver = async (travelId) => {
   return { type: null, message: '' };
 };
 
+const validateNewCar = (model, color, licensePlate) => {
+  const { error } = addDriverSchema
+    .validate({
+      model,
+      color,
+      licensePlate,
+    });
+
+  if (error) return { type: 'INVALID_VALUE', message: error.message };
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validateId,
   validateNewPassenger,
   validateRequestTravelSchema,
   validateInputValues,
   validateAlreadyDriver,
+  validateNewCar,
 };
