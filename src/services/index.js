@@ -1,7 +1,7 @@
 const passengerService = require('./passenger.service');
-const driverService = require('./driver.service');
+const travelService = require('./travel.service');
 
 module.exports = {
   passengerService,
-  driverService,
+  travelService,
 };
