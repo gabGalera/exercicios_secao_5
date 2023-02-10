@@ -3,7 +3,7 @@ const travelModel = require('./travel.model');
 const waypointModel = require('./waypoint.model');
 const driverModel = require('./driver.model');
 const carModel = require('./car.model');
-const driversCarsModel = require('./driverCar.model');
+const driverCarModel = require('./driverCar.model');
 
 module.exports = {
   passengerModel,
@@ -11,5 +11,5 @@ module.exports = {
   waypointModel,
   driverModel,
   carModel,
-  driversCarsModel,
+  driverCarModel,
 };

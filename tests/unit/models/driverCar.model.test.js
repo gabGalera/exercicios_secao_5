@@ -4,7 +4,7 @@ const connection = require('../../../src/models/connection');
 
 const { payload } = require('./mocks/driversCars.model.mock');
 
-const { driversCarsModel } = require('../../../src/models');
+const { driverCarModel } = require('../../../src/models');
 
 describe('Testa o model driversCars', function () {
   it('Testa se retorna o id correto', async function () {
@@ -12,7 +12,7 @@ describe('Testa o model driversCars', function () {
     sinon.stub(connection, 'execute').resolves([{ insertId: 1 }]);
 
     // Act
-    const result = await driversCarsModel.insert(payload);
+    const result = await driverCarModel.insert(payload);
 
     // Assert
     expect(result).to.equal(1);

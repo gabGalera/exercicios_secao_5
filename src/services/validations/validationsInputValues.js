@@ -1,8 +1,9 @@
-const { travelModel, driverModel } = require('../../models');
+const { travelModel, driverModel, carModel } = require('../../models');
 const { 
   addPassengerSchema, 
   idSchema, 
   addRequestTravelSchema, 
+  addCarSchema,
   addDriverSchema, 
 } = require('./schemas');
 
@@ -50,7 +51,7 @@ const validateAlreadyDriver = async (travelId) => {
 };
 
 const validateNewCar = (model, color, licensePlate) => {
-  const { error } = addDriverSchema
+  const { error } = addCarSchema
     .validate({
       model,
       color,
@@ -61,6 +62,23 @@ const validateNewCar = (model, color, licensePlate) => {
   return { type: null, message: '' };
 };
 
+const validateNewDriver = async (name, carIds) => {
+  const { error } = addDriverSchema
+    .validate({ name, carIds });
+  if (error) return { type: 'INVALID_VALUE', message: error.message };
+
+  if (carIds) {
+    const cars = await Promise.all(
+      carIds.map(async (carId) => carModel.findById(carId)),
+    );
+
+    const someCarIsMissing = cars.some((car) => car === undefined);
+    if (someCarIsMissing) return { type: 'CAR_NOT_FOUND', message: 'Some car is not found' };
+  }
+
+  return { type: null, message: '' };
+};
+
 module.exports = {
   validateId,
   validateNewPassenger,
@@ -68,4 +86,5 @@ module.exports = {
   validateInputValues,
   validateAlreadyDriver,
   validateNewCar,
+  validateNewDriver,
 };
