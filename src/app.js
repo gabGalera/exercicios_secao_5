@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { driverService, travelService } = require('./services');
+const { travelService } = require('./services');
 const { passengerRouter } = require('./routers');
 
 const app = express();
@@ -10,7 +10,7 @@ app.use(express.json());
 app.use('/passengers', passengerRouter);
 
 app.get('/drivers/open/travels', async (_req, res) => {
-  const result = await driverService.getWaitingDriverTravels();
+  const result = await travelService.getWaitingDriverTravels();
   res.status(200).json(result);
 });
 
