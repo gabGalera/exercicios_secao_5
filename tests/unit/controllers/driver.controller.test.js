@@ -5,9 +5,9 @@ const sinonChai = require('sinon-chai');
 const { expect } = chai;
 chai.use(sinonChai);
 
-const { travelService } = require('../../../src/services');
+const { travelService, driverService } = require('../../../src/services');
 const { driverController } = require('../../../src/controllers');
-const { correctReturnTravel } = require('./mocks/driver.controller.mock');
+const { correctReturnTravel, allDrivers } = require('./mocks/driver.controller.mock');
 
 describe('Teste de unidade do driverController', function () {
   describe('Buscando as viagens em aberto', function () {
@@ -101,6 +101,38 @@ describe('Teste de unidade do driverController', function () {
           requestDate: '2022-08-24T03:04:04.374Z',
       });
     });
+  });
+
+  describe('Buscando todos os motoristas', function () {
+    it('Testa caminho do sucesso', async function () {
+      const res = {};
+      const req = {};
+
+      res.status = sinon.stub().returns(res);
+      res.json = sinon.stub().returns();
+      sinon.stub(driverService, 'getDrivers')
+        .resolves({ type: null, message: allDrivers });
+    
+      await driverController.getDrivers(req, res);
+
+      expect(res.status).to.have.been.calledWith(200);
+      expect(res.json).to.have.been.calledWith(allDrivers);
+      });
+
+      it('Testa um caminho de falha', async function () {
+        const res = {};
+        const req = {};
+  
+        res.status = sinon.stub().returns(res);
+        res.json = sinon.stub().returns();
+        sinon.stub(driverService, 'getDrivers')
+          .resolves({ type: 'DRIVER_NOT_FOUND', message: '' });
+      
+        await driverController.getDrivers(req, res);
+  
+        expect(res.status).to.have.been.calledWith(404);
+        expect(res.json).to.have.been.calledWith('');
+        });
   });
 
   afterEach(function () {

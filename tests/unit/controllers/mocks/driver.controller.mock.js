@@ -13,6 +13,34 @@ const correctReturnTravel = ({
   requestDate: '2022-08-24T03:04:04.374Z',
 });
 
+const allDrivers = [
+  {
+    "id": 1,
+    "name": "Liana Cisneiros"
+  },
+  {
+    "id": 2,
+    "name": "Fábio Frazão"
+  },
+  {
+    "id": 3,
+    "name": "Anastacia Bicalho"
+  },
+  {
+    "id": 4,
+    "name": "Samara Granjeiro"
+  },
+  {
+    "id": 5,
+    "name": "Levi Teixeira"
+  },
+  {
+    "id": 6,
+    "name": "Gus"
+  }
+];
+
 module.exports = {
   correctReturnTravel,
+  allDrivers,
 };

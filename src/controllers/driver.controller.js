@@ -1,4 +1,4 @@
-const { travelService } = require('../services');
+const { travelService, driverService } = require('../services');
 const errorMap = require('../utils/errorMap');
 
 const openTravel = async (_req, res) => {
@@ -33,9 +33,17 @@ const endTravel = async (req, res) => {
   res.status(200).json(message);
 };
 
+const getDrivers = async (_req, res) => {
+  const { type, message } = await driverService.getDrivers();
+  if (type) return res.status(errorMap.mapError(type)).json(message);
+
+  res.status(200).json(message);
+};
+
 module.exports = {
   openTravel,
   travelAssign,
   startTravel,
   endTravel,
+  getDrivers,
 };

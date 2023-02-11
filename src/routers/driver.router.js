@@ -11,4 +11,6 @@ router.put('/:driverId/travels/:travelId/start', driverController.startTravel);
 
 router.put('/:driverId/travels/:travelId/end', driverController.endTravel);
 
+router.get('/', driverController.getDrivers);
+
 module.exports = router;

@@ -3,6 +3,7 @@ const { validateNewDriver } = require('./validations/validationsInputValues');
 
 const getDrivers = async () => {
   const drivers = await driverModel.findAll();
+  if (!drivers) return { type: 'DRIVER_NOT_FOUND', message: drivers };
   return { type: null, message: drivers };
 };
 
